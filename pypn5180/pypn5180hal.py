@@ -26,20 +26,22 @@ except:
 class _spi():
 
     def __init__(self, bus=0, device=0, speed=1e6, ftdi_port="PORT_A"):
-        if SPI_DEVICE is "RASPI":
+        if SPI_DEVICE == "RASPI":
             self.device = spidev.SpiDev()
             self.device.open(bus, device)
             self.device.max_speed_hz = speed
             self.xfer = self.device.xfer
 
-        elif SPI_DEVICE is "FTDI":
+        elif SPI_DEVICE == "FTDI":
             # Configure FTDI PORT A or PORT B here:
             # Port A: ftdi://ftdi:2232h/1
             # Port B: ftdi://ftdi:2232h/2
             if ftdi_port == "PORT_A":
                 ftdi_devid = "ftdi://ftdi:2232h/1"
-            else:
+            elif ftdi_port == "PORT_B":
                 ftdi_devid = "ftdi://ftdi:2232h/2"
+            else:
+                ftdi_devid = "ftdi://ftdi:232h:1/1"
 
             self.device = spi.SpiController()
             self.device.configure(ftdi_devid)
@@ -215,7 +217,7 @@ class PN5180_HIL(object):
         parameters.insert(0, cmd)
         dir(self.spi)
         self.spi.xfer(parameters)
-        if self.debug is 'PN5180_HIL':
+        if self.debug == 'PN5180_HIL':
             print("SPI send frame: %r" %(parameters))
         self._usDelay(5000) # TODO : Manage busy signal instead of hard sleep
         return self._getResponse(responseLen)
@@ -268,7 +270,7 @@ class PN5180_HIL(object):
         elif type(content) is int:
             listBytes = list(struct.pack("<I", content))
             parameters.extend(map(ord,listBytes))
-        if self.debug is "PN5180_HIL":
+        if self.debug == "PN5180_HIL":
             print("WriteReg: %r <=> %r" %(parameters, content))
         return self._sendCommand(self.CMD['WRITE_REGISTER'], parameters, 0)
 
