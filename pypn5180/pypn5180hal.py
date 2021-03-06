@@ -41,7 +41,7 @@ class _spi():
             elif ftdi_port == "PORT_B":
                 ftdi_devid = "ftdi://ftdi:2232h/2"
             else:
-                ftdi_devid = "ftdi://ftdi:232h:1/1"
+                ftdi_devid = "ftdi://ftdi:232h/1"
 
             self.device = spi.SpiController()
             self.device.configure(ftdi_devid)
