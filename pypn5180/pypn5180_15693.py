@@ -60,14 +60,16 @@ def parseInputs():
     parser.add_argument("-c", "--custom", type=str, default="A0", help="One hex byte for CUSTOM command code ex: A0")
     parser.add_argument("-m", "--mfCode", type=str, default="07", help="Manufacturer Code ID")
     parser.add_argument("-f", "--ftdi_port", type=str, default="PORT_A", help="FTDI 2232 port 'PORT_A, PORT_B'")
+    parser.add_argument("-s", "--ftdi_serial_number", type=str, default="FTXXXXXX", help="FTDI 2232 serial number 'FTBBBBBB'")
     return parser.parse_args()
 
 
 if __name__ == "__main__":
 
     args = parseInputs()
+    print(args)
 
-    isoIec15693 = iso_iec_15693(args.ftdi_port)
+    isoIec15693 = iso_iec_15693(args.ftdi_port, args.ftdi_serial_number)
     sys_info, errStr = isoIec15693.getSystemInformationCmd()
     serial = binascii.hexlify(bytes(sys_info[1:9])).decode('utf-8')
     print('[%s] SysInfo - chip serial: %r' %(errStr, serial))
