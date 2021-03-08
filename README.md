@@ -73,7 +73,7 @@ Configuration switch between portA and portB to be done with **-f PORT_x** comma
 |---------|--------------|
 |+5V      |    VCC       |
 |+3V3     |    3V3       |
-|RST      |    3V3       |
+|RST      |    BD4 / AD4 |
 |NSS      |    BD3 / AD3 |
 |MOSI     |    BD1 / AD1 |
 |MISO     |    BD2 / AD2 |
