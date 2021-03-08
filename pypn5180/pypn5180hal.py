@@ -48,6 +48,10 @@ class _spi():
             self.slave = self.device.get_port(cs=0, freq=speed, mode=0)
             self.xfer = self.ftdi_xfer
             print("Conected to FTDI SPI %s" % (ftdi_devid))
+            self.reset = self.device.get_gpio()
+            self.reset.set_direction(0x10, 0x10)
+            self.reset.write(0x00)
+            self.reset.write(0x10)
         else:
             self.device = None            
             self.xfer = None
