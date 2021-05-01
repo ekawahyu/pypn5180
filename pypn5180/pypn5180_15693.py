@@ -60,7 +60,7 @@ def parseInputs():
     parser.add_argument("-c", "--custom", type=str, default="A0", help="One hex byte for CUSTOM command code ex: A0")
     parser.add_argument("-m", "--mfCode", type=str, default="07", help="Manufacturer Code ID")
     parser.add_argument("-f", "--ftdi_port", type=str, default="PORT_A", help="FTDI 2232 port 'PORT_A, PORT_B'")
-    parser.add_argument("-s", "--ftdi_serial_number", type=str, default="FTXXXXXX", help="FTDI 2232 serial number 'FTBBBBBB'")
+    parser.add_argument("-s", "--ftdi_serial_number", type=str, default="1", help="FTDI 2232 serial number 'FTBBBBBB'")
     return parser.parse_args()
 
 

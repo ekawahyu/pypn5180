@@ -45,7 +45,7 @@ class iso_iec_15693(object):
     # Avoid unhandled error codes crash:
     ERROR_CODE = collections.defaultdict(lambda:0,ERROR_CODE)
 
-    def __init__(self, ftdi_port = "PORT_A", ftdi_serial_number = "FTCCCCCC"):
+    def __init__(self, ftdi_port = "PORT_A", ftdi_serial_number = "1"):
         print("Connecting to PN5180 device...")
         self.pn5180 = pypn5180.PN5180(debug="PN5180", ftdi_port = ftdi_port, ftdi_serial_number = ftdi_serial_number)
         print("PN5180 Self test:")

@@ -25,7 +25,7 @@ except:
 
 class _spi():
 
-    def __init__(self, bus=0, device=0, speed=1e6, ftdi_port="PORT_A",  ftdi_serial_number="FTAAAAAA"):
+    def __init__(self, bus=0, device=0, speed=1e6, ftdi_port="PORT_A",  ftdi_serial_number="1"):
         if SPI_DEVICE == "RASPI":
             self.device = spidev.SpiDev()
             self.device.open(bus, device)
@@ -193,7 +193,7 @@ class PN5180_HIL(object):
     """
     Debug values : PN5180_HIL, PN5180
     """
-    def __init__(self, bus=0, device=0, speed=50000, ftdi_port="PORT_A", debug="PN5180_HIL", ftdi_serial_number="FT6N4G5J"):
+    def __init__(self, bus=0, device=0, speed=50000, ftdi_port="PORT_A", debug="PN5180_HIL", ftdi_serial_number="1"):
         try:
             self.debug = debug
             self.spi = _spi(bus, device, speed, ftdi_port, ftdi_serial_number)
