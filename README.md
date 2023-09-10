@@ -6,7 +6,7 @@ Running on linux PC with USB/FTDI interface with python3, or on raspberry-pi wit
 ## Linux PC setup
 
 ```bash
-sudo apt install python3-pip libusb-1.0 
+sudo apt install python3-pip libusb-1.0-0
 pip3 install wheel
 pip3 install setuptools
 pip3 install pyftdi
