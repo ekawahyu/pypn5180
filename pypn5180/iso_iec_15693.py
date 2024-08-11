@@ -117,7 +117,7 @@ class iso_iec_15693(object):
     def writeSingleBlockCmd(self, blockNumber, data, uid=[]):
         #'21'
 
-        if len(data) is not 8:
+        if len(data) != 8:
             print("WARNING, data block length must be 8 bytes")
 
         frame = []

@@ -112,7 +112,7 @@ class PN5180(pypn5180hal.PN5180_HIL):
 
         # Check RF_STATUS TRANSCEIVE_STATE value
         # must be WAIT_TRANSMIT
-        if self.getRfStatusTransceiveState() is not "WAIT_TRANSMIT":
+        if self.getRfStatusTransceiveState() != "WAIT_TRANSMIT":
             print("transactionIsoIec15693 Error in RF state: %s" %self.getRfStatusTransceiveState())
             return -1 
         

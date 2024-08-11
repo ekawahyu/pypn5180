@@ -88,7 +88,7 @@ if __name__ == "__main__":
         dumpFREE(serial + date + ".dat")
 
     elif args.mode == "CUSTOM":
-        if args.data is not "":
+        if args.data != "":
             dataIn = list(binascii.unhexlify(args.data))
         else:
             dataIn = []
