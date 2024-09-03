@@ -117,7 +117,8 @@ class PN5180(pypn5180hal.PN5180_HIL):
             return -1 
         
         self.sendData(8,command)
-        self._usDelay(50000) # 50 ms
+        # self._usDelay(50000) # 50 ms
+        self._usDelay(2000000) # 2000 ms
         nbBytes = self.getRxStatusNbBytesReceived()
         response = self.readData(nbBytes)
         if response:
